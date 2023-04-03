@@ -1,0 +1,29 @@
+#root h1,
+#root h2,
+#root h3,
+#root h4,
+#root h5,
+#root h6 {
+  font-family: "Avenir", sans-serif;
+  font-weight: 700 !important;
+  /* letter-spacing: 1px; */
+  line-height: 140%;
+}
+
+html body p,
+html body ul,
+html body div,
+html body footer,
+html body section {
+  font-family: "Avenir", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 170%;
+  letter-spacing: 0.1px;
+}
+
+body p {
+  margin-bottom: 0;
+  font-size: 16px;
+  /* color: #293246; */
+}

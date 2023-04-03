@@ -1,0 +1,11 @@
+.nav-list-small {
+  transition: 0.2s;
+}
+
+.nav-list-small:hover {
+  background-color: #4bcf80;
+}
+
+.chakra-ui-dark .nav-list-small:hover {
+  background-color: #343b47;
+}

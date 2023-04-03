@@ -1,5 +1,5 @@
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { Box, Container, Divider, Flex, Heading, Icon, List, ListItem, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
+import { Box, Button, Container, Divider, Flex, Heading, Icon, List, ListItem, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 // import Switch from "@src/components/common/Switch";
 import { navigationList } from "@src/components/fragments/Navbar/data";
 import { boxShadowColor, containerMaxWidth, mediumBreakpoints } from "@src/definitions/variables";
@@ -14,7 +14,7 @@ export default function Navbar() {
 
   const [mediumScreen] = useMediaQuery(mediumBreakpoints);
   const bg = useColorModeValue("white", "#282e39");
-  const linkActiveColor = useColorModeValue("blue.500", "blue.300");
+  const linkActiveColor = useColorModeValue("teal.500", "teal.300");
   const boxShadow = useColorModeValue(boxShadowColor, "none");
 
   const setBgNavbar = () => {
@@ -27,7 +27,7 @@ export default function Navbar() {
   });
 
   return (
-    <Box as="nav" paddingY="20px" fontWeight={500} className="navbar" bg={isBg ? bg : "unset"} boxShadow={isBg ? `0 0 30px ${boxShadow}` : "unset"} position="fixed" top={0} w="full" zIndex={998}>
+    <Box as="nav" paddingY="20px" fontWeight={500} className="navbar" bg={isBg ? bg : "unset"} boxShadow={isBg ? `0 0 30px ${boxShadow}` : "unset"} position="fixed" top="0px" w="full" zIndex={998}>
       <Container maxW={containerMaxWidth} display="flex" alignItems="center" justifyContent="space-between">
         <Heading as="h4" size="md">
           Invest
@@ -36,7 +36,7 @@ export default function Navbar() {
           </Box>
         </Heading>
 
-        <List display={mediumScreen ? "flex" : "none"} columnGap="40px">
+        <List display={mediumScreen ? "flex" : "none"} columnGap="40px" textTransform="uppercase">
           {navigationList.map((nav) => (
             <>
               {nav.url == location.pathname ? (
@@ -52,9 +52,9 @@ export default function Navbar() {
           ))}
         </List>
 
-        {/* <Box display={mediumScreen ? "flex" : "none"}>
-          <Switch />
-        </Box> */}
+        <Box display={mediumScreen ? "flex" : "none"}>
+          <Button>Login</Button>
+        </Box>
 
         <Box as="button" className="nav-button" display={mediumScreen ? "none" : "flex"} flexDir="column" onClick={() => setOpenNav(true)}>
           <HamburgerIcon fontSize="29px" />
