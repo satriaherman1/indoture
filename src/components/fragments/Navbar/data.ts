@@ -4,13 +4,10 @@ const navigationList = [
     url: "/",
   },
   {
-    name: "Tentang Kami",
+    name: "Culture Center",
     url: "/about-us",
   },
-  {
-    name: "Blog",
-    url: "/blogs",
-  },
+
   {
     name: "Daftar",
     url: "/register",
