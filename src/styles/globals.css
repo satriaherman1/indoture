@@ -1,1 +1,6 @@
 @import url("fonts.css");
+
+html,
+body {
+  overflow-x: hidden;
+}
