@@ -29,8 +29,7 @@ export default function HeaderHome(props: BoxProps) {
       scale: 0.8,
       opacity: 0.8,
       duration: 0.2,
-      repeat: 1,
-      yoyo: true,
+
       onComplete: function () {
         gsap.to(ctaButton.current, {
           scale: 1,
