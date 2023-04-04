@@ -1,12 +1,13 @@
 import { Box, BoxProps, Button, Container, Flex, Heading, Icon, Image, ImageProps, Text, useMediaQuery } from "@chakra-ui/react";
 import { containerMaxWidth, largeBreakpoints, mediumBreakpoints } from "@src/definitions/variables";
 import { Expo, TweenMax, gsap } from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Tween } from "react-gsap";
 
 export default function HeaderHome(props: BoxProps) {
   const [mediumScreen] = useMediaQuery(mediumBreakpoints);
   const [largeScreen] = useMediaQuery(largeBreakpoints);
+  const [count, setCount] = useState(0);
 
   const imageRef = useRef(null);
   const ctaButton = useRef(null);
@@ -17,10 +18,11 @@ export default function HeaderHome(props: BoxProps) {
   useEffect(() => {
     gsap.fromTo(boxImageRef.current, { opacity: 0, width: 0, ease: Expo.easeIn }, { duration: 2, opacity: 1, width: "100%", ease: Expo.easeInOut });
     gsap.fromTo(imageRef.current, { opacity: 0, scale: 0.4, ease: Expo.easeInOut }, { duration: 2, opacity: 1, scale: 1, ease: Expo.easeInOut });
-    TweenMax.to(statistic1Ref.current, 2, {
+    TweenMax.to(statistic1Ref, 1, {
       value: 500,
-      // Animasi properti 'ease' dari lambat ke cepat
-      ease: "power4.out",
+      roundProps: "value",
+      onUpdate: () => setCount(Math.ceil(statistic1Ref.innerHTML)),
+      ease: Power0.easeNone,
     });
   }, []);
 
@@ -72,9 +74,7 @@ export default function HeaderHome(props: BoxProps) {
 
             <Flex marginTop="50px" gap="40px">
               <Box position="relative">
-                <Tween ref={statistic1Ref} from={{ value: 0 }}>
-                  <Heading>{0}</Heading>
-                </Tween>
+                <Heading ref={statistic1Ref}>{count}</Heading>
 
                 <Text>Anggota</Text>
                 <Image src="https://res.cloudinary.com/dbg3ckwtz/image/upload/v1680610705/Indoture/decorator_lup2rj.png" position="absolute" top="-8px" left="-8px" w="40px" zIndex="-1" />
