@@ -1,30 +1,33 @@
 import { Box, BoxProps, Button, Container, Flex, Heading, Icon, Image, ImageProps, Text, useMediaQuery } from "@chakra-ui/react";
 import { containerMaxWidth, largeBreakpoints, mediumBreakpoints } from "@src/definitions/variables";
-import { Expo, TweenMax, gsap } from "gsap";
+import { Expo, Power0, TweenMax, gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { Tween } from "react-gsap";
 
 export default function HeaderHome(props: BoxProps) {
   const [mediumScreen] = useMediaQuery(mediumBreakpoints);
   const [largeScreen] = useMediaQuery(largeBreakpoints);
-  const [count, setCount] = useState(0);
+  const [stats1Count, setStats1Count] = useState(0);
 
   const imageRef = useRef(null);
   const ctaButton = useRef(null);
   const boxImageRef = useRef(null);
 
-  const statistic1Ref = useRef(null);
-
   useEffect(() => {
     gsap.fromTo(boxImageRef.current, { opacity: 0, width: 0, ease: Expo.easeIn }, { duration: 2, opacity: 1, width: "100%", ease: Expo.easeInOut });
     gsap.fromTo(imageRef.current, { opacity: 0, scale: 0.4, ease: Expo.easeInOut }, { duration: 2, opacity: 1, scale: 1, ease: Expo.easeInOut });
-    TweenMax.to(statistic1Ref, 1, {
-      value: 500,
-      roundProps: "value",
-      onUpdate: () => setCount(Math.ceil(statistic1Ref.innerHTML)),
-      ease: Power0.easeNone,
-    });
   }, []);
+
+  useEffect(() => {
+    let stats1Interval;
+    if (stats1Count <= 500) {
+      stats1Interval = setInterval(() => {
+        setStats1Count((c) => c + 1);
+      }, 10);
+    } else {
+      clearInterval(stats1Interval);
+    }
+  }, [stats1Count]);
 
   const clickAnimation = () => {
     gsap.to(ctaButton.current, 0.2, {
@@ -51,7 +54,7 @@ export default function HeaderHome(props: BoxProps) {
   };
 
   return (
-    <Box {...props} as="header" marginTop="140px">
+    <Box {...props} as="header" marginTop={mediumScreen ? "140px" : "100px"}>
       <Container
         position="relative"
         maxW={containerMaxWidth}
@@ -74,7 +77,7 @@ export default function HeaderHome(props: BoxProps) {
 
             <Flex marginTop="50px" gap="40px">
               <Box position="relative">
-                <Heading ref={statistic1Ref}>{count}</Heading>
+                <Heading>500+</Heading>
 
                 <Text>Anggota</Text>
                 <Image src="https://res.cloudinary.com/dbg3ckwtz/image/upload/v1680610705/Indoture/decorator_lup2rj.png" position="absolute" top="-8px" left="-8px" w="40px" zIndex="-1" />
@@ -95,7 +98,7 @@ export default function HeaderHome(props: BoxProps) {
 
         <Flex gap="45px" justifyContent="space-between" flexBasis={mediumScreen ? "48%" : "100%"} position="relative">
           {/* <Box ref={boxRef1} w={mediumScreen ? "3vw" : "3vw"} h="180vh" bg="green.500" position="absolute" top="-80vh" right="24vw" zIndex="-1"></Box> */}
-          <Box ref={boxImageRef} w={mediumScreen ? "40vw" : "32vw"} h={mediumScreen ? "170vh" : "150vh"} bg="teal.600" position="absolute" top="-80vh" right="-10vw" zIndex="-1"></Box>
+          <Box ref={boxImageRef} w={mediumScreen ? "40vw" : "32vw"} h={mediumScreen ? "170vh" : "136vh"} bg="teal.600" position="absolute" top="-80vh" right="-10vw" zIndex="-1"></Box>
           <Flex flexWrap="wrap">
             <Image ref={imageRef} src="https://res.cloudinary.com/dbg3ckwtz/image/upload/v1680608404/Indoture/header1_htnexi.png" {...imgProperty} />
           </Flex>

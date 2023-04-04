@@ -32,7 +32,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (openNav) {
-      gsap.fromTo(smallNavBgRef.current, { opacity: 0 }, { borderRadius: 0, opacity: 1, width: "100vw", height: "90vh", top: "10vh" });
+      gsap.fromTo(smallNavBgRef.current, { opacity: 0 }, { borderRadius: 0, opacity: 1, width: "100vw", height: "90vh", top: "69px" });
       gsap.fromTo(
         smallNavRef.current,
         { width: 0, height: 0 },
@@ -163,7 +163,8 @@ export default function Navbar() {
       {!mediumScreen && (
         <>
           <Box ref={smallNavBgRef} bg={bg} position="fixed" w="100vw" left="0" zIndex={997}></Box>
-          <Box ref={smallNavRef} bg="none" pos="fixed" height={0} top="8vh" left={0} overflow="hidden" zIndex={997}>
+          <Box ref={smallNavRef} bg="none" pos="fixed" height={0} top="69px" left={0} overflow="hidden" zIndex={997}>
+            <Divider />
             <List display="flex" flexDir="column" marginTop="20px">
               {navigationList.map((nav, key) => (
                 <>
