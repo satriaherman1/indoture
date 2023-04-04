@@ -25,7 +25,7 @@ export default function HeaderHome(props: BoxProps) {
   }, []);
 
   const clickAnimation = () => {
-    gsap.to(ctaButton.current, 2, {
+    gsap.to(ctaButton.current, 0.2, {
       scale: 0.8,
       opacity: 0.8,
       duration: 0.2,
