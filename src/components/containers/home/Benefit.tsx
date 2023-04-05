@@ -26,7 +26,7 @@ export default function Benefit(props: BoxProps) {
             </Box>
           </Flex>
 
-          <Flex flexDir="column" flexBasis={mediumScreen ? "40%" : "100%"}>
+          <Flex flexDir="column" flexBasis={mediumScreen ? "40%" : "100%"} paddingX="12px">
             <Flex paddingY="30px" borderTop="2px solid #eeeeee" gap="19px">
               <Text fontWeight={700}>Juara 1 Tari Modern</Text>
               <Text>Lomba tari modern di MKKS Nasional Jakarta</Text>

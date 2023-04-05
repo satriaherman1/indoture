@@ -4,3 +4,7 @@ html,
 body {
   overflow-x: hidden;
 }
+
+* {
+  transition: 0.2s;
+}
