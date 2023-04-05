@@ -59,6 +59,7 @@ export default function HeaderHome(props: BoxProps) {
         position="relative"
         maxW={containerMaxWidth}
         display="flex"
+        columnGap="100px"
         marginY={mediumScreen ? "16vh" : "5vh"}
         justifyContent="space-between"
         flexDir={largeScreen ? "row" : "column-reverse"}

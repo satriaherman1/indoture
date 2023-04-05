@@ -135,7 +135,7 @@ export default function Navbar() {
           </Box>
         </Heading>
 
-        <List display={mediumScreen ? "flex" : "none"} columnGap="40px" textTransform="uppercase">
+        <List display={mediumScreen ? "flex" : "none"} columnGap="40px" textTransform="capitalize">
           {navigationList.map((nav) => (
             <>
               {nav.url == location.pathname ? (
