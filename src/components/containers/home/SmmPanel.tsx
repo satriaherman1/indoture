@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex, Heading, Icon, Text, useMediaQuery } from "@chakra-ui/react";
+import { Box, BoxProps, Flex, Heading, Icon, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 import { boxShadow, mediumBreakpoints } from "@src/definitions/variables";
 import { BsPeopleFill } from "react-icons/bs";
 import { RiBook2Fill } from "react-icons/ri";
@@ -7,8 +7,12 @@ import { AiFillProject } from "react-icons/ai";
 export default function SmmPanel(props: BoxProps) {
   const [mediumScreen] = useMediaQuery(mediumBreakpoints);
 
+  const smmDarkBg = useColorModeValue("white", "gray.700");
+  const smmShadow = useColorModeValue(boxShadow, "none");
+  const textSecondaryColor = useColorModeValue("gray.600", "white");
+
   return (
-    <Box {...props} w="90%" mx="auto" boxShadow={boxShadow} bg="white" p="30px" rounded="md">
+    <Box {...props} w="90%" mx="auto" boxShadow={smmShadow} bg={smmDarkBg} p="30px" rounded="md">
       <Flex flexDir={mediumScreen ? "row" : "column"} rowGap="29px" justifyContent="space-around">
         <Box display="flex" columnGap="20px" alignItems="center">
           <Box padding="12px" h="fit-content" rounded="full" bg="teal.50">
@@ -16,7 +20,7 @@ export default function SmmPanel(props: BoxProps) {
           </Box>
           <Box>
             <Heading size="md">Relasi</Heading>
-            <Text color="gray.600">relasi antar anggota</Text>
+            <Text color={textSecondaryColor}>relasi antar anggota</Text>
           </Box>
         </Box>
         <Box display="flex" columnGap="20px" alignItems="center">
@@ -25,7 +29,7 @@ export default function SmmPanel(props: BoxProps) {
           </Box>
           <Box>
             <Heading size="md">Ilmu</Heading>
-            <Text color="gray.600">Ilmu Yang Bermanfaat</Text>
+            <Text color={textSecondaryColor}>Ilmu Yang Bermanfaat</Text>
           </Box>
         </Box>
         <Box display="flex" columnGap="20px" alignItems="center">
@@ -34,7 +38,7 @@ export default function SmmPanel(props: BoxProps) {
           </Box>
           <Box>
             <Heading size="md">Portfolio</Heading>
-            <Text color="gray.600">Portfolio Karir</Text>
+            <Text color={textSecondaryColor}>Portfolio Karir</Text>
           </Box>
         </Box>
         <Box display="flex" columnGap="20px" alignItems="center">
@@ -43,7 +47,7 @@ export default function SmmPanel(props: BoxProps) {
           </Box>
           <Box>
             <Heading size="md">Relasi</Heading>
-            <Text color="gray.600">relasi antar anggota</Text>
+            <Text color={textSecondaryColor}>relasi antar anggota</Text>
           </Box>
         </Box>
       </Flex>

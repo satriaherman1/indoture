@@ -1,11 +1,15 @@
-import { Box, BoxProps, Button, Container, Flex, Heading, Icon, Image, Text, useMediaQuery } from "@chakra-ui/react";
+import { Box, BoxProps, Button, Container, Flex, Heading, Icon, Image, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 import { containerMaxWidth, fallbackSrc, mediumBreakpoints } from "@src/definitions/variables";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function HomeDesc(props: BoxProps) {
   const [mediumScreen] = useMediaQuery(mediumBreakpoints);
+
+  const descBg = useColorModeValue("white", "gray.800");
+  const textSecondaryColor = useColorModeValue("gray.600", "white");
+
   return (
-    <Box {...props} marginTop="120px" bg="white">
+    <Box {...props} marginTop="120px" bg={descBg}>
       <Container maxW={containerMaxWidth}>
         <Flex columnGap="50px" justifyContent="space-between" flexDir={mediumScreen ? "row" : "column"} rowGap="50px" alignItems="center">
           <Box flexBasis={mediumScreen ? "50%" : "100%"}>
@@ -18,7 +22,7 @@ export default function HomeDesc(props: BoxProps) {
             </Text>
             <Heading as="h1">Apa itu Indoture</Heading>
 
-            <Text mt="25px" color="gray.600">
+            <Text mt="25px" color={textSecondaryColor}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem temporibus sapiente perspiciatis aspernatur ad qui cupiditate dolores tempora, et corrupti saepe veniam, voluptates rerum
               quas sint perferendis quidem esse laborum beatae deserunt officia excepturi commodi?
             </Text>
