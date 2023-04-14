@@ -183,9 +183,11 @@ export default function Navbar() {
               ))}
             </List>
 
-            {/* <Box position="absolute" left="22px" bottom="10vh">
-            <Switch />
-          </Box> */}
+            <Box position="absolute" left="22px" bottom="10vh">
+              <Link to="/login">
+                <Button colorScheme="teal">Login</Button>
+              </Link>
+            </Box>
           </Box>
         </>
       )}
