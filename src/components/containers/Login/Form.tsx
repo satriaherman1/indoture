@@ -1,4 +1,5 @@
 import { Box, BoxProps, Button, Checkbox, Container, Divider, Flex, FormControl, FormLabel, HStack, Heading, Icon, Image, Input, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
+import FormDecorator from "@src/components/containers/Login/FormDecorator";
 import BenefitCard from "@src/components/fragments/benefit-card/BenefitCard";
 import { IBenefitCardProps } from "@src/components/fragments/benefit-card/BenefitCardDeclare";
 import RegistrationCard from "@src/components/fragments/registration-card/RegistrationCard";
@@ -15,7 +16,7 @@ export default function LoginForm(props: BoxProps) {
 
   return (
     <Box {...props} pos="fixed" top="0" h="100vh" w="100vw" bg="blue.800">
-      <Box pos="fixed" top="50%" left="50%" transform="translate(-50%, -50%)" w="90%" maxW="450px" bg="white" rounded="md" p="20px 25px">
+      <Box pos="fixed" zIndex={2} top="50%" left="50%" transform="translate(-50%, -50%)" w="90%" maxW="450px" bg="white" rounded="md" p="20px 25px">
         <Image display="block" mx="auto" src="https://res.cloudinary.com/dbg3ckwtz/image/upload/v1681461866/Indoture/logo_lsieqq.png" w="50px" h="50px" />
         <Heading mt="20px" size="md" textAlign="center">
           Masuk Ke akun Indoture
@@ -82,6 +83,8 @@ export default function LoginForm(props: BoxProps) {
           </Text>
         </Box>
       </Box>
+
+      <FormDecorator />
     </Box>
   );
 }
