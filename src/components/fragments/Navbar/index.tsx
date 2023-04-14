@@ -152,7 +152,9 @@ export default function Navbar() {
         </List>
 
         <Box display={mediumScreen ? "flex" : "none"}>
-          <Button>Login</Button>
+          <Link to="/login">
+            <Button>Login</Button>
+          </Link>
         </Box>
 
         <Box as="button" className="nav-button" display={mediumScreen ? "none" : "flex"} flexDir="column" onClick={() => setOpenNav(!openNav)}>
