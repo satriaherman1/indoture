@@ -81,22 +81,24 @@ export default function Navbar() {
           ))}
         </List>
 
-        {authUser !== null ? (
-          <Popover>
-            <PopoverTrigger>
-              <Image src={authUser?.photoURL} w="25px" h="25px" />
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverHeader>{authUser?.displayName}</PopoverHeader>
-              <PopoverBody>
-                <Button colorScheme="red" onClick={signOut}>
-                  Logout
-                </Button>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
+        {mediumScreen && authUser !== null ? (
+          <Box pos="relative">
+            <Popover>
+              <PopoverTrigger>
+                <Image rounded="full" src={authUser?.photoURL} w="30px" h="30px" />
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader>{authUser?.displayName}</PopoverHeader>
+                <PopoverBody>
+                  <Button colorScheme="red" onClick={signOut}>
+                    Logout
+                  </Button>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          </Box>
         ) : (
           <Box display={mediumScreen ? "flex" : "none"}>
             <Link to="/login">
