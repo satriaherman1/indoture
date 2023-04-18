@@ -1,12 +1,30 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { Box, Button, Container, Divider, Heading, List, ListItem, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Image,
+  List,
+  ListItem,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  useColorModeValue,
+  useMediaQuery,
+} from "@chakra-ui/react";
 // import Switch from "@src/components/common/Switch";
 import { navigationList } from "@src/components/fragments/Navbar/data";
-import { boxShadowColor, containerMaxWidth, mediumBreakpoints } from "@src/definitions/variables";
+import { boxShadowColor, containerMaxWidth, logoSrc, mediumBreakpoints } from "@src/definitions/variables";
 import { useEffect, useRef, useState } from "react";
 import "./style.css";
 
-import { gsap } from "gsap";
+import useGsapNavbar, { IGsapNavbar } from "@src/components/fragments/Navbar/hooks/gsap";
+import { useAuth } from "@src/lib/context/firebase/useAuth";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -30,110 +48,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", setBgNavbar);
   });
 
-  useEffect(() => {
-    if (openNav) {
-      gsap.fromTo(smallNavBgRef.current, { opacity: 0 }, { borderRadius: 0, opacity: 1, width: "100vw", height: "calc(100vh - 69px)", top: "69px" });
-      gsap.fromTo(
-        smallNavRef.current,
-        { width: 0, height: 0 },
-        {
-          width: "100vw",
-          height: "90vh",
-        },
-      );
-      gsap.fromTo(
-        ".nav-list-small-gsap-active",
-        {
-          opacity: 0,
-          marginTop: "20px",
-        },
-        {
-          duration: 0.3,
-          opacity: 1,
-          marginTop: 0,
-        },
-      );
-      gsap.fromTo(
-        ".nav-list-small-gsap-0",
-        {
-          opacity: 0,
-          marginTop: "20px",
-        },
-        {
-          duration: 0.3,
-          opacity: 1,
-          marginTop: 0,
-        },
-      );
-      gsap.fromTo(
-        ".nav-list-small-gsap-1",
-        {
-          opacity: 0,
-          marginTop: "20px",
-        },
-        {
-          duration: 0.3,
-          opacity: 1,
-          marginTop: 0,
-        },
-      );
-      gsap.fromTo(
-        ".nav-list-small-gsap-2",
-        {
-          opacity: 0,
-          marginTop: "20px",
-        },
-        {
-          duration: 0.3,
-          opacity: 1,
-          marginTop: 0,
-        },
-      );
-    } else {
-      gsap.to(smallNavRef.current, {
-        delay: 0.2,
-        width: 0,
-        height: 0,
-      });
-      gsap.to(smallNavBgRef.current, {
-        delay: 0.2,
-        opacity: 0,
-        height: 0,
-        top: 0,
-      });
+  const gsapNavbarProps: IGsapNavbar = {
+    smallNavBgRef: smallNavBgRef,
+    smallNavRef: smallNavRef,
+    openNav: openNav,
+  };
 
-      // nav list
-      gsap.to(".nav-list-small-gsap-active", 0.2, {
-        duration: 0.2,
-        opacity: 0,
-        marginTop: "20px",
-      });
-      gsap.to(".nav-list-small-gsap-0", 0.2, {
-        opacity: 0,
-        marginTop: "20px",
-      });
+  useGsapNavbar(gsapNavbarProps);
 
-      gsap.to(".nav-list-small-gsap-1", 0.2, {
-        opacity: 0,
-        marginTop: "20px",
-      });
+  const { authUser, signOut } = useAuth() as any;
 
-      gsap.to(".nav-list-small-gsap-2", 0.2, {
-        opacity: 0,
-        marginTop: "20px",
-      });
-    }
-  }, [openNav]);
+  console.log(authUser);
 
   return (
     <Box as="nav" paddingY="20px" fontWeight={500} className="navbar" bg={isBg ? bg : "unset"} boxShadow={isBg ? `0 0 30px ${boxShadow}` : "unset"} position="fixed" top="0px" w="full" zIndex={999}>
       <Container maxW={containerMaxWidth} display="flex" alignItems="center" justifyContent="space-between">
-        <Heading as="h4" size="md">
-          Curtu
-          <Box as="span" color="primary.500">
-            re
-          </Box>
-        </Heading>
+        <Image w="35px" src={logoSrc} />
 
         <List display={mediumScreen ? "flex" : "none"} columnGap="40px" textTransform="capitalize">
           {navigationList.map((nav) => (
@@ -151,11 +81,29 @@ export default function Navbar() {
           ))}
         </List>
 
-        <Box display={mediumScreen ? "flex" : "none"}>
-          <Link to="/login">
-            <Button>Login</Button>
-          </Link>
-        </Box>
+        {authUser !== null ? (
+          <Popover>
+            <PopoverTrigger>
+              <Image src={authUser?.photoURL} w="25px" h="25px" />
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverHeader>{authUser?.displayName}</PopoverHeader>
+              <PopoverBody>
+                <Button colorScheme="red" onClick={signOut}>
+                  Logout
+                </Button>
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
+        ) : (
+          <Box display={mediumScreen ? "flex" : "none"}>
+            <Link to="/login">
+              <Button>Login</Button>
+            </Link>
+          </Box>
+        )}
 
         <Box as="button" className="nav-button" display={mediumScreen ? "none" : "flex"} flexDir="column" onClick={() => setOpenNav(!openNav)}>
           <HamburgerIcon fontSize="29px" />

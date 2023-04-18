@@ -1,10 +1,10 @@
-import { Box, BoxProps, Button, Container, Flex, Heading, Icon, Image, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
+import { Box, BoxProps, Container, Flex, Heading, Icon, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 import BenefitCard from "@src/components/fragments/benefit-card/BenefitCard";
 import { IBenefitCardProps } from "@src/components/fragments/benefit-card/BenefitCardDeclare";
-import RegistrationCard from "@src/components/fragments/registration-card/RegistrationCard";
-import { boxShadow, containerMaxWidth, fallbackSrc, mediumBreakpoints } from "@src/definitions/variables";
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { containerMaxWidth, mediumBreakpoints } from "@src/definitions/variables";
+import { AiFillProject } from "react-icons/ai";
 import { IoPeopleCircleOutline } from "react-icons/io5";
+import { RiBook2Fill } from "react-icons/ri";
 
 export default function Benefit(props: BoxProps) {
   const [mediumScreen] = useMediaQuery(mediumBreakpoints);
@@ -17,7 +17,7 @@ export default function Benefit(props: BoxProps) {
       icon: (
         <Box p="12px" w="fit-content" h="fit-content" rounded="full" bg="blue.50">
           {" "}
-          <Icon as={IoPeopleCircleOutline} display="block" fontSize="34px" />{" "}
+          <Icon as={IoPeopleCircleOutline} display="block" color="blue.500" fontSize="34px" />{" "}
         </Box>
       ),
       title: "Relasi",
@@ -25,9 +25,9 @@ export default function Benefit(props: BoxProps) {
     },
     {
       icon: (
-        <Box p="12px" w="fit-content" h="fit-content" rounded="full" bg="blue.50">
+        <Box p="12px" w="fit-content" h="fit-content" rounded="full" bg="teal.50">
           {" "}
-          <Icon as={IoPeopleCircleOutline} display="block" fontSize="34px" />{" "}
+          <Icon as={RiBook2Fill} display="block" color="teal.500" fontSize="34px" />{" "}
         </Box>
       ),
       title: "Pengalaman",
@@ -35,12 +35,12 @@ export default function Benefit(props: BoxProps) {
     },
     {
       icon: (
-        <Box p="12px" w="fit-content" h="fit-content" rounded="full" bg="blue.50">
+        <Box p="12px" w="fit-content" h="fit-content" rounded="full" bg="red.50">
           {" "}
-          <Icon as={IoPeopleCircleOutline} display="block" fontSize="34px" />{" "}
+          <Icon as={AiFillProject} display="block" color="red.500" fontSize="34px" />{" "}
         </Box>
       ),
-      title: "Relasi",
+      title: "Portfolio",
       description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi rerum fuga facere totam officiis repellat iure fugiat nam adipisci voluptatum.",
     },
   ];

@@ -1,8 +1,8 @@
 import { Box, BoxProps, Flex, Heading, Icon, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 import { boxShadow, mediumBreakpoints } from "@src/definitions/variables";
+import { AiFillProject } from "react-icons/ai";
 import { BsPeopleFill } from "react-icons/bs";
 import { RiBook2Fill } from "react-icons/ri";
-import { AiFillProject } from "react-icons/ai";
 
 export default function SmmPanel(props: BoxProps) {
   const [mediumScreen] = useMediaQuery(mediumBreakpoints);
@@ -42,8 +42,8 @@ export default function SmmPanel(props: BoxProps) {
           </Box>
         </Box>
         <Box display="flex" columnGap="20px" alignItems="center">
-          <Box padding="12px" h="fit-content" rounded="full" bg="teal.50">
-            <Icon display="block" color="teal.500" fontSize="30px" w="30px" h="30px" as={BsPeopleFill} />
+          <Box padding="12px" h="fit-content" rounded="full" bg="twitter.50">
+            <Icon display="block" color="twitter.500" fontSize="30px" w="30px" h="30px" as={BsPeopleFill} />
           </Box>
           <Box>
             <Heading size="md">Relasi</Heading>
