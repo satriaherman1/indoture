@@ -151,7 +151,7 @@ export default function Navbar() {
                     </Text>
                   </Box>
 
-                  <Button colorScheme="red" ml="auto">
+                  <Button colorScheme="red" ml="auto" onClick={signOut}>
                     <Icon as={AiOutlinePoweroff} />
                   </Button>
                 </Flex>
