@@ -4,6 +4,8 @@ import {
   Button,
   Container,
   Divider,
+  Flex,
+  Icon,
   Image,
   List,
   ListItem,
@@ -14,6 +16,7 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverTrigger,
+  Text,
   useColorModeValue,
   useMediaQuery,
 } from "@chakra-ui/react";
@@ -26,6 +29,8 @@ import "./style.css";
 import useGsapNavbar, { IGsapNavbar } from "@src/components/fragments/Navbar/hooks/gsap";
 import { useAuth } from "@src/lib/context/firebase/useAuth";
 import { Link } from "react-router-dom";
+
+import { AiOutlinePoweroff } from "react-icons/ai";
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -134,9 +139,23 @@ export default function Navbar() {
             </List>
 
             <Box position="absolute" left="22px" bottom="10vh">
-              <Link to="/login">
-                <Button colorScheme="teal">Login</Button>
-              </Link>
+              {authUser !== null ? (
+                <Flex gap="20px">
+                  <Image rounded="full" src={authUser?.photoURL} w="30px" h="30px" />
+                  <Box>
+                    <Text>{authUser?.displayName}</Text>
+                    <Text>Online</Text>
+                  </Box>
+
+                  <Button colorScheme="red" ml="auto">
+                    <Icon as={AiOutlinePoweroff} />
+                  </Button>
+                </Flex>
+              ) : (
+                <Link to="/login">
+                  <Button colorScheme="teal">Login</Button>
+                </Link>
+              )}
             </Box>
           </Box>
         </>
