@@ -1,6 +1,5 @@
-interface IProtectedRouteProps {
-  isSignedIn: boolean;
+interface IGuardRouteProps {
   children: React.ReactElement;
 }
 
-export { IProtectedRouteProps };
+export { IGuardRouteProps };
