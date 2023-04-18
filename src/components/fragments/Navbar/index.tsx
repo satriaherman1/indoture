@@ -140,11 +140,15 @@ export default function Navbar() {
 
             <Box position="absolute" left="22px" bottom="10vh">
               {authUser !== null ? (
-                <Flex gap="20px">
+                <Flex gap="20px" alignItems="center">
                   <Image rounded="full" src={authUser?.photoURL} w="30px" h="30px" />
                   <Box>
-                    <Text>{authUser?.displayName}</Text>
-                    <Text>Online</Text>
+                    <Text fontSize="15px" lineHeight="normal">
+                      {authUser?.displayName}
+                    </Text>
+                    <Text fontSize="12px" lineHeight="normal">
+                      Online
+                    </Text>
                   </Box>
 
                   <Button colorScheme="red" ml="auto">
