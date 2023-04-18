@@ -83,7 +83,9 @@ export default function Navbar() {
         </Flex>
       ) : (
         <Link to="/login">
-          <Button colorScheme="teal">Login</Button>
+          <Button colorScheme="teal" w="full">
+            Login
+          </Button>
         </Link>
       )}
     </Box>
