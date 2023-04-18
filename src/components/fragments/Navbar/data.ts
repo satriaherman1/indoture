@@ -4,8 +4,8 @@ const navigationList = [
     url: "/",
   },
   {
-    name: "Culture Center",
-    url: "/about-us",
+    name: "Postingan",
+    url: "/posts",
   },
 
   {

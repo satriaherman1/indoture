@@ -1,13 +1,13 @@
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { Box, Button, Container, Divider, Flex, Heading, Icon, List, ListItem, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { Box, Button, Container, Divider, Heading, List, ListItem, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 // import Switch from "@src/components/common/Switch";
 import { navigationList } from "@src/components/fragments/Navbar/data";
 import { boxShadowColor, containerMaxWidth, mediumBreakpoints } from "@src/definitions/variables";
 import { useEffect, useRef, useState } from "react";
 import "./style.css";
 
-import { Link } from "react-router-dom";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState<boolean>(false);
