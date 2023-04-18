@@ -136,7 +136,7 @@ export default function Navbar() {
               ))}
             </List>
 
-            <Box position="absolute" left="22px" bottom="10vh" w="full">
+            <Box position="absolute" left="22px" bottom="10vh" w="90%">
               {authUser !== null ? (
                 <Flex gap="20px" alignItems="center">
                   <Image rounded="full" src={authUser?.photoURL} w="30px" h="30px" />
