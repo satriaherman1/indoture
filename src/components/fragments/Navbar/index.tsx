@@ -63,8 +63,6 @@ export default function Navbar() {
 
   const { authUser, signOut } = useAuth() as any;
 
-  console.log(authUser);
-
   return (
     <Box as="nav" paddingY="20px" fontWeight={500} className="navbar" bg={isBg ? bg : "unset"} boxShadow={isBg ? `0 0 30px ${boxShadow}` : "unset"} position="fixed" top="0px" w="full" zIndex={999}>
       <Container maxW={containerMaxWidth} display="flex" alignItems="center" justifyContent="space-between">

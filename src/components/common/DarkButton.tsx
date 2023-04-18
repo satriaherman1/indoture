@@ -8,7 +8,6 @@ export default function DarkButton() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const handleClick = () => {
-    console.log(colorMode);
     if (colorMode == "light") {
       gsap.fromTo(
         bgDarkButtonRef.current,
