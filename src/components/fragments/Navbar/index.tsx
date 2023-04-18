@@ -138,7 +138,7 @@ export default function Navbar() {
               ))}
             </List>
 
-            <Box position="absolute" left="22px" bottom="10vh">
+            <Box position="absolute" left="22px" bottom="10vh" w="full">
               {authUser !== null ? (
                 <Flex gap="20px" alignItems="center">
                   <Image rounded="full" src={authUser?.photoURL} w="30px" h="30px" />
@@ -151,7 +151,7 @@ export default function Navbar() {
                     </Text>
                   </Box>
 
-                  <Button colorScheme="red" ml="auto" onClick={signOut}>
+                  <Button size="sm" colorScheme="red" ml="auto" onClick={signOut}>
                     <Icon as={AiOutlinePoweroff} />
                   </Button>
                 </Flex>
