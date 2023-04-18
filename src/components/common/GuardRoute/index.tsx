@@ -1,4 +1,4 @@
-import { IGuardRouteProps } from "@src/components/common/GuardRoute/IProtectedRoute";
+import { IGuardRouteProps } from "@src/components/common/GuardRoute/IGuardRoute";
 import { useAuth } from "@src/lib/context/firebase/useAuth";
 import { memo } from "react";
 import { Navigate } from "react-router-dom";
