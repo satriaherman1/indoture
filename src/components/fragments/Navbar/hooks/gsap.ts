@@ -20,18 +20,7 @@ export default function useGsapNavbar({ deps, smallNavBgRef, smallNavRef, openNa
           height: "90vh",
         },
       );
-      gsap.fromTo(
-        ".nav-list-small-gsap-active",
-        {
-          opacity: 0,
-          marginTop: "20px",
-        },
-        {
-          duration: 0.3,
-          opacity: 1,
-          marginTop: 0,
-        },
-      );
+
       gsap.fromTo(
         ".nav-list-small-gsap-0",
         {
@@ -82,11 +71,7 @@ export default function useGsapNavbar({ deps, smallNavBgRef, smallNavRef, openNa
       });
 
       // nav list
-      gsap.to(".nav-list-small-gsap-active", 0.2, {
-        duration: 0.2,
-        opacity: 0,
-        marginTop: "20px",
-      });
+
       gsap.to(".nav-list-small-gsap-0", 0.2, {
         opacity: 0,
         marginTop: "20px",

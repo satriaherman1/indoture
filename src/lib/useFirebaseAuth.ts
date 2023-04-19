@@ -1,6 +1,7 @@
 import app from "@src/config/firebase";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithRedirect, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // auth
 export const auth = getAuth(app);
@@ -25,7 +26,11 @@ export default function useFirebaseAuth() {
     setLoading(false);
   };
 
-  const signInWithGoogle = () => signInWithRedirect(auth, provider);
+  const signInWithGoogle = () =>
+    signInWithRedirect(auth, provider).then(() => {
+      const navigate = useNavigate();
+      navigate("/");
+    });
   const signUp = (email: string, password: string, { username }: any) => {
     createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
       updateProfile(userCredential.user, {
